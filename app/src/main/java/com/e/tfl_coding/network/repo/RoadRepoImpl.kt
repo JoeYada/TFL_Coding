@@ -1,5 +1,7 @@
 package com.e.tfl_coding.network.repo
 
+import com.e.tfl_coding.common.APP_ID
+import com.e.tfl_coding.common.APP_KEY
 import com.e.tfl_coding.models.ApiError
 import com.e.tfl_coding.models.Road
 import com.e.tfl_coding.network.ApiService
@@ -10,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 
 class RoadRepoImpl(private val apiService: ApiService): RoadRepository {
     override fun getRoadStatus(id:String):Single<List<Road>> {
-        return apiService.getRoadStatus(id).subscribeOn(Schedulers.io())
+        return apiService.getRoadStatus(id, APP_ID, APP_KEY).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .flatMap {
             if (it.isSuccessful) {

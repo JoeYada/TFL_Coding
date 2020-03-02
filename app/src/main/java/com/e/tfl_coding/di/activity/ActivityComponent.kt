@@ -1,6 +1,6 @@
 package com.e.tfl_coding.di.activity
 
-import com.e.tfl_coding.MainActivity
+import com.e.tfl_coding.ui.MainActivity
 import dagger.Subcomponent
 
 @ActivityScope

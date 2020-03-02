@@ -2,8 +2,7 @@ package com.e.tfl_coding.network
 
 import com.e.tfl_coding.common.BASE_URL
 import com.e.tfl_coding.di.application.ApplicationScope
-import com.e.tfl_coding.network.repo.RoadRepoImpl
-import com.e.tfl_coding.network.repo.RoadRepository
+import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
+@Module
 class NetworkModule {
     @Provides
     @ApplicationScope
@@ -40,7 +40,4 @@ class NetworkModule {
     @ApplicationScope
     fun providesService(retrofit: Retrofit):ApiService = retrofit.create(ApiService::class.java)
 
-    @Provides
-    @ApplicationScope
-    fun providesRepository(apiService: ApiService): RoadRepository = RoadRepoImpl(apiService)
 }
